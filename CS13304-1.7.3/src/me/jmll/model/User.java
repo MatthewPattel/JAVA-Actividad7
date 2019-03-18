@@ -8,7 +8,7 @@ public class User {
 	 * */
 	String username = "";
 	String password = "";
-	String fullName = "";
+	String fullname = "";
 	
   
   public String getUsername() {
@@ -32,7 +32,7 @@ public class User {
   }
   
   public void setFullname(String newFullname){
-	  this.fullName = newFullname;
+	  this.fullname = newFullname;
   }
   
 }
