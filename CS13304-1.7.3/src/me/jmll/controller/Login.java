@@ -31,7 +31,7 @@ import me.jmll.model.User;
 		})
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final Logger log = LogManager.getLogger();
+	private static final com.sun.media.jfxmedia.logging.Logger log = LogManager.getLogger();
     
     /**
      * @see HttpServlet#HttpServlet()
@@ -43,19 +43,22 @@ public class Login extends HttpServlet {
     
     @SuppressWarnings("unchecked")
 	public void init(){
-    	/* 2(a) Creará un objeto de tipo Map llamado DB el cual
-    	 *  estará compuesto de String como llaves 
+    	/* 2(a) CrearÃ¡ un objeto de tipo Map llamado DB el cual
+    	 *  estarÃ¡ compuesto de String como llaves 
     	 *  y me.jmll.model.User como valor.
     	 * */
     	Map<String, User> DB = null;
     	if (this.getServletContext().getAttribute("DB") == null){
-    		/*
-    		 * Escribe aquí tu código
-    		 * 
-    		 * */
+    		DB = this.getServletContext();
 
-    	} else {
+    	} else {	
     		DB = (HashMap<String, User>) this.getServletContext().getAttribute("DB");
+    		User user1 = new User("anakin", "deathStar2");
+    		user1.setFullname("Anakin Skywalker");
+    		User user2 = new User("kenobi", "starfighter");
+    		user2.setFullname("Obi Wan Kenobi");
+    		log.DEBUG("Se han creado usuarios jedi");
+    		this.ServletContext.setAttribute("DB");
     	}
     	log.info("Usuarios en DB {}", DB.keySet());
     }
@@ -63,13 +66,13 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/* 3. obtendrá el request dispatcher y enviará la solicitud 
-		 * a /WEB-INF/views/session.jsp si el atributo de la sesión
-		 *  user no es nulo. De lo contrario, llamará al método doPost()
+		/* 3. obtendrÃ¡ el request dispatcher y enviarÃ¡ la solicitud 
+		 * a /WEB-INF/views/session.jsp si el atributo de la sesiÃ³n
+		 *  user no es nulo. De lo contrario, llamarÃ¡ al mÃ©todo doPost()
 		 * */
 		if (request.getSession().getAttribute("user") != null){
     		/*
-    		 * Escribe aquí tu código
+    		 * Escribe aquÃ­ tu cÃ³digo
     		 * 
     		 * */
 			
@@ -83,11 +86,11 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<String> errors = new ArrayList<String>();
-		/* 4(a) a.	Validará que los parámetros de la solicitud inputPassword e 
-		 * inputUsername no sean nulos, de lo contrario agregará un elemento 
-		 * string a la lista errors con el mensaje “You should login first”, 
-		 * registrará un evento WARN con el log con el mismo mensaje y 
-		 * reenviará a /WEB-INF/views/login.jsp utilizando el requestDispatcher.
+		/* 4(a) a.	ValidarÃ¡ que los parÃ¡metros de la solicitud inputPassword e 
+		 * inputUsername no sean nulos, de lo contrario agregarÃ¡ un elemento 
+		 * string a la lista errors con el mensaje â€œYou should login firstâ€�, 
+		 * registrarÃ¡ un evento WARN con el log con el mismo mensaje y 
+		 * reenviarÃ¡ a /WEB-INF/views/login.jsp utilizando el requestDispatcher.
 		 * */
 		if (request.getParameter("inputUsername") != null && request.getParameter("inputPassword") != null ){
 			String username = request.getParameter("inputUsername");
@@ -97,12 +100,12 @@ public class Login extends HttpServlet {
 			User user = login(username, password);
 			if (user != null){
 				/* 4(b). a.	Si el usuario no es nulo, asigna el atributo 
-				 * user a la sesión con el valor de getUsername y crea
+				 * user a la sesiÃ³n con el valor de getUsername y crea
 				 *  un Cookie llamado fullName con el valor de getFullName
 				 * */
 	    		
 				/*
-	    		 * Escribe aquí tu código
+	    		 * Escribe aquÃ­ tu cÃ³digo
 	    		 * 
 	    		 * */
 			} else{
@@ -113,7 +116,7 @@ public class Login extends HttpServlet {
 			}
 		} else {
     		/*
-    		 * Escribe aquí tu código
+    		 * Escribe aquÃ­ tu cÃ³digo
     		 * 
     		 * */
 
@@ -124,15 +127,15 @@ public class Login extends HttpServlet {
 	private User login(String username, String password){
 		/* 5(a). Obtiene el atributo DB del ServletContext, 
 		 *  y lo referencia a la variable DB para posteriormente
-		 *  validar la existencia del usuario en cuestión 
-		 *  utilizando el método get(username) de la
+		 *  validar la existencia del usuario en cuestiÃ³n 
+		 *  utilizando el mÃ©todo get(username) de la
 		 *   clase HashMap.
 		 * */
 		if (username == null || password == null){
             return null;
         }
 		/*
-		 * Escribe aquí tu código
+		 * Escribe aquÃ­ tu cÃ³digo
 		 * 
 		 * */
          
