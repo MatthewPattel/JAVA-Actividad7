@@ -45,10 +45,19 @@ public class Logout extends HttpServlet {
 			 *  con el método invalidate()
 			 * */
 			
-			/*
-			 * Escribe aquí tu código
-			 * 
-			 * */
+			request.removeAttribute();
+			
+			if (cookies != null) {
+				for(Cookie cookie : request.getCookies()) {
+					if (cookie.getName.equals("fullName")) {
+						cookie.setValue(null);
+						cookie.setMaxAge(0);
+					}
+				}
+			}
+			
+			request.invalidate();
+			
 			errors.add("Logged out");
 			request.setAttribute("errors", errors);
 			log.warn("User {} has been logged out",user );
