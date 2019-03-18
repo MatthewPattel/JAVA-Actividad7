@@ -9,23 +9,31 @@ public class User {
 	String username = "";
 	String password = "";
 	String fullName = "";
-}
-	  // Getter
-	  public String getUsername() {
-	    return username;
-	  }
+	
+  
+  public String getUsername() {
+    return username;
+  }
 
-	  // Setter
-	  public void setUsername(String newUsername) {
-	    this.username = newUsername;
-	  }
-	  
-	  public String getPassword(){
-		  return password;
-	  }
-	  
-	  public void setPassword (String newPassword){
-		  
-	  }
-	  
+  public void setUsername(String newUsername) {
+    this.username = newUsername;
+  }
+  
+  public String getPassword(){
+	  return password;
+  }
+  
+  public void setPassword (String newPassword){
+	  this.password = newPassword;
+  }
+  
+  public String getFullname(){
+	  return fullname;
+  }
+  
+  public void setFullname(String newFullname){
+	  this.fullName = newFullname;
+  }
+  
+}
 	  
