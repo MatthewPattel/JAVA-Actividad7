@@ -71,11 +71,7 @@ public class Login extends HttpServlet {
 		 *  user no es nulo. De lo contrario, llamarÃ¡ al mÃ©todo doPost()
 		 * */
 		if (request.getSession().getAttribute("user") != null){
-    		/*
-    		 * Escribe aquÃ­ tu cÃ³digo
-    		 * 
-    		 * */
-			
+			 request.getRequestDispatcher("/WEB-INF/views/session.jsp").forward(request, response);
 		} else {
 			doPost(request,response);
 		}
@@ -115,11 +111,7 @@ public class Login extends HttpServlet {
 				request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
 			}
 		} else {
-    		/*
-    		 * Escribe aquÃ­ tu cÃ³digo
-    		 * 
-    		 * */
-
+    		errors.add("You should login first");
 			request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
 		}
 	}
