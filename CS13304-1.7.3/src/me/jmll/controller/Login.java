@@ -100,10 +100,8 @@ public class Login extends HttpServlet {
 				 *  un Cookie llamado fullName con el valor de getFullName
 				 * */
 	    		
-				/*
-	    		 * Escribe aquÃ­ tu cÃ³digo
-	    		 * 
-	    		 * */
+				user = user.getUsername();
+				Cookie fullName = new Cookie("fullName", user.getFullname());
 			} else{
 				log.error("Invalid username or password.");
 				errors.add("Invalid username or password.");
@@ -112,6 +110,7 @@ public class Login extends HttpServlet {
 			}
 		} else {
     		errors.add("You should login first");
+    		log.WARNING("You should login first");
 			request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
 		}
 	}
@@ -126,10 +125,9 @@ public class Login extends HttpServlet {
 		if (username == null || password == null){
             return null;
         }
-		/*
-		 * Escribe aquÃ­ tu cÃ³digo
-		 * 
-		 * */
+		
+		DB = this.getServletContext().getAttribute("DB");
+		user = DB.get(username);
          
         if (user == null){
             return null;
