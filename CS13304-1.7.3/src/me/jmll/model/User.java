@@ -10,6 +10,10 @@ public class User {
 	String password = "";
 	String fullname = "";
 	
+	public User(String username2, String password2) {
+		username = username2;
+		password = password2;
+	}
   
   public String getUsername() {
     return username;
