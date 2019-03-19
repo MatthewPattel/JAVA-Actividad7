@@ -31,11 +31,11 @@
         <appender-ref ref="console"/>
         <appender-ref ref="logfile"/>
         <Logger/>
-                <Logger level = "warn" addivity ="false">
+                <Logger level = "info" addivity ="false">
         <appender-ref ref="console"/>
         <appender-ref ref="logfile"/>
         <Logger/>
-                <Logger level = "warn" addivity ="false">
+                <Logger level = "error" addivity ="false">
         <appender-ref ref="console"/>
         <appender-ref ref="logfile"/>
         <Logger/>
