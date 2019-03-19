@@ -21,11 +21,24 @@
     <!-- 7. Se agregan tres loggers, uno por cada clase
      con referencia al appender LogFile 
      -->
-     
         <root level="debug">
             <appender-ref ref="Console" />
+                 		</appender-ref ref="logfile"/>
+            
         </root>
         <!-- Escribe aquí tu código -->
-
+        <Logger level = "warn" addivity ="false">
+        <appender-ref ref="console"/>
+        <appender-ref ref="logfile"/>
+        <Logger/>
+                <Logger level = "warn" addivity ="false">
+        <appender-ref ref="console"/>
+        <appender-ref ref="logfile"/>
+        <Logger/>
+                <Logger level = "warn" addivity ="false">
+        <appender-ref ref="console"/>
+        <appender-ref ref="logfile"/>
+        <Logger/>
+        
     </loggers>
 </configuration>
